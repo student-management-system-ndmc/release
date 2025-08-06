@@ -39,6 +39,9 @@ services:
     restart: unless-stopped
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - teen_up_network
+
 volumes:
   postgres_data:
     driver: local

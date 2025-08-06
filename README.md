@@ -63,7 +63,7 @@ DATABASE_NAME=teen_up
 
 ```bash
 # Hoặc chạy trong background
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ### Lưu ý: Mỗi lần down và up lại container thì nó sẽ tự động CD và sẽ chạy tự động migrations
