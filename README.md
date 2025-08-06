@@ -7,15 +7,29 @@ Hệ thống quản lý học sinh được xây dựng với NestJS backend và
 ### Yêu cầu hệ thống
 
 - Docker và Docker Compose
-- Node.js 18+ (để development)
+- Node.js 22.14.0+ (để development)
 
 ### Chạy dự án
 
 1. **Clone repository và di chuyển đến thư mục release:**
 
 - backend
+
+```bash
+git clone https://github.com/student-management-system-ndmc/backend.git
+```
+
 - frontend
+
+```bash
+git clone https://github.com/student-management-system-ndmc/frontend.git
+```
+
 - release
+
+```bash
+git clone https://github.com/student-management-system-ndmc/release.git
+```
 
 ```bash
 cd release
@@ -24,16 +38,25 @@ cd release
 2. **Tạo file .env từ template:**
 
 ```bash
+cp .env.example .env  # sửa lại .env
+```
+
+#### Hoặc tạo file .env mới với nội dung:
+
+```bash
 # Tạo file .env với các biến môi trường cần thiết
-cp .env.example .env  # Nếu có file example
-# Hoặc tạo file .env mới với nội dung:
-PORT=3000
+# Frontend
 FRONTEND_PORT=3001
+VITE_API_URL=http://localhost:3000
+
+# Backend
+PORT=3000
+
 DATABASE_HOST=postgres
 DATABASE_PORT=5432
-DATABASE_USERNAME=student_user
-DATABASE_PASSWORD=student_pass
-DATABASE_NAME=student_management
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=1234
+DATABASE_NAME=teen_up
 ```
 
 3. **Build và chạy các containers:**
@@ -42,6 +65,8 @@ DATABASE_NAME=student_management
 # Hoặc chạy trong background
 docker-compose up -d --build
 ```
+
+### Lưu ý: Mỗi lần down và up lại container thì nó sẽ tự động CD và sẽ chạy tự động migrations
 
 4. **Truy cập ứng dụng:**
 

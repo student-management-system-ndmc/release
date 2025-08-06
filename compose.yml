@@ -9,6 +9,8 @@ services:
     env_file:
       - .env
     restart: unless-stopped
+    networks:
+      - teen_up_network
 
   teen_up_be:
     container_name: teen_up_be
@@ -22,6 +24,8 @@ services:
     env_file:
       - .env
     restart: unless-stopped
+    networks:
+      - teen_up_network
 
   postgres:
     image: postgres:15-alpine
@@ -37,3 +41,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 volumes:
   postgres_data:
+    driver: local
+networks:
+  teen_up_network:
+    driver: bridge
